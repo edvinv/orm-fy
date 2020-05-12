@@ -1,14 +1,16 @@
-interface ISchemaProperty<classT> {
+import { DefaultNamingConventions } from "../drivers/naming-conventions";
+
+export interface ISchemaProperty<classT> {
   name: keyof classT;
   type: "string" | "number" | "boolean";
   dbType?: string;
-  dbColumnName?: string;
+  columnName?: string;
 }
 
 /**
  * Entity Schema defines mappings between class/properies and table/columns.
  */
-interface ISchemaEntity<classT> {
+export interface ISchemaEntity<classT> {
   /**
    * Name of entity
    */
@@ -28,10 +30,25 @@ interface ISchemaEntity<classT> {
 }
 
 export class SchemaBuilder {
+  constructor() {
+
+  }
+
+  private namingConventions = new DefaultNamingConventions();
   private entities = new Map<string, ISchemaEntity<any>>();
 
-  addEntity<classT>(schema: ISchemaEntity<classT>): SchemaBuilder {
-    this.entities.set(schema.name, schema);
+  addEntity<classT>(schemaEntity: ISchemaEntity<classT>): SchemaBuilder {
+    // infer table name
+    schemaEntity.tableName = schemaEntity.tableName ?? this.namingConventions.tableName(schemaEntity);
+
+    // infer defaults for properties
+    for (const schemaProperty of schemaEntity.properties) {
+      // infer column name
+      schemaProperty.columnName = schemaProperty.columnName ?? this.namingConventions.columnName(schemaProperty, schemaEntity);
+
+    }
+
+    this.entities.set(schemaEntity.name, schemaEntity);
 
     return this;
   }

@@ -16,6 +16,22 @@
   "author": "edvinv",
   "license": "MIT",
   "devDependencies": {
+    "@types/pg": "^7.14.3",
+    "@types/pluralize": "0.0.29",
+    "@types/snake-case": "^1.1.2",
+    "node-postgres": "^0.1.4",
     "typescript": "^3.8.3"
+  },
+  "peerDependencies": {
+    "pg": "^8.1.0"
+  },
+  "peerDependenciesMeta": {
+    "pg": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "pluralize": "^8.0.0",
+    "snake-case": "^3.0.3"
   }
 }
