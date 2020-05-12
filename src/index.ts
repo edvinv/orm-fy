@@ -1,1 +1,1 @@
-console.log("Hello World from orm-fy.");
+export * from "./schema/schema-builder";
