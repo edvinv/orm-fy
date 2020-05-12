@@ -1,4 +1,4 @@
-import { DefaultNamingConventions } from "../drivers/naming-conventions";
+import { DefaultNamingConventions } from "../drivers/default-naming-conventions";
 
 export interface ISchemaProperty<classT> {
   name: keyof classT;
@@ -30,11 +30,9 @@ export interface ISchemaEntity<classT> {
 }
 
 export class SchemaBuilder {
-  constructor() {
-
+  constructor(private namingConventions = new DefaultNamingConventions()) {
   }
 
-  private namingConventions = new DefaultNamingConventions();
   private entities = new Map<string, ISchemaEntity<any>>();
 
   addEntity<classT>(schemaEntity: ISchemaEntity<classT>): SchemaBuilder {
