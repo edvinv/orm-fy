@@ -11,15 +11,19 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "clean": "rm -rf ./build"
+    "clean": "rm -rf ./build",
+    "test": "jest"
   },
   "author": "edvinv",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^25.2.1",
     "@types/pg": "^7.14.3",
     "@types/pluralize": "0.0.29",
     "@types/snake-case": "^1.1.2",
+    "jest": "^26.0.1",
     "node-postgres": "^0.1.4",
+    "ts-jest": "^25.5.1",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {

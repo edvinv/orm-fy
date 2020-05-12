@@ -54,4 +54,13 @@ export class SchemaBuilder {
   removeEntity(name: string): void {
     this.entities.delete(name);
   }
+
+  /**
+   * Get added entity or undefined if entity was not added
+   * @param name Name of the entity
+   */
+  getEntity(name: string): ISchemaEntity<any> | undefined {
+    return this.entities.get(name);
+  }
+
 }
