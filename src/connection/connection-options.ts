@@ -22,5 +22,5 @@ export interface ConnectionOptions {
   /**
    * When using connectionString, then user, host, database, password and port should be undefined  
    */
-  connectionString: string;
+  connectionString?: string;
 }

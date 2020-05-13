@@ -1,8 +1,9 @@
 import { ConnectionOptions } from "./connection-options";
-import { DriverNames, PgConnection } from "../drivers";
+import { DriverNames } from "../drivers";
 import { Client } from "./client";
 import { QueryResult } from "./query-result";
 import { Transaction } from "./transaction";
+import { getConnectionManager } from "./connection-manager";
 
 export abstract class Connection {
   constructor(protected option: ConnectionOptions) {
@@ -15,6 +16,8 @@ export abstract class Connection {
 
   async abstract connect(): Promise<Client>;
   async abstract query(text: string): Promise<QueryResult>;
+  async abstract close(): Promise<void>;
+
 
   async transaction(transactionScope: (transaction: Transaction) => any): Promise<Transaction> {
 
@@ -38,14 +41,7 @@ export abstract class Connection {
   }
 }
 
-export function createConnection(option: ConnectionOptions): Connection {
-  let connection!: Connection;
-  switch (option.driver) {
-    case "postgres":
-      connection = new PgConnection(option);
-      break;
-    default:
-      throw Error(`Invalid driver name: '${option.driver}'`);
-  }
-  return connection;
+export function createConnection(options: ConnectionOptions): Connection {
+  const connectionManager = getConnectionManager();
+  return connectionManager.createConnection(options)
 }

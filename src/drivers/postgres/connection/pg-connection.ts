@@ -27,4 +27,9 @@ export class PgConnection extends Connection {
     return queryResult;
   }
 
+  async close(): Promise<void>{
+    await this.pool.end();
+  }
+
+
 }
