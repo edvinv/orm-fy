@@ -12,7 +12,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "clean": "rm -rf ./build",
-    "test": "jest"
+    "test": "jest",
+    "postgres:up": "(cd ./test/environments/postgres; docker-compose up -d)"
   },
   "author": "edvinv",
   "license": "MIT",
