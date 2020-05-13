@@ -1,1 +1,3 @@
-export * from "./schema/schema-builder";
+export * from "./schema";
+export * from "./connection";
+export * from "./drivers";
