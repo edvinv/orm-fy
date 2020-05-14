@@ -22,16 +22,22 @@
     "@types/pg": "^7.14.3",
     "@types/pluralize": "0.0.29",
     "@types/snake-case": "^1.1.2",
+    "@types/sqlite3": "^3.1.6",
     "jest": "^26.0.1",
     "pg": "^8.2.0",
+    "sqlite3": "^4.2.0",
     "ts-jest": "^25.5.1",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
-    "pg": "^8.1.0"
+    "pg": "^8.1.0",
+    "sqlite3": "^4.2.0"
   },
   "peerDependenciesMeta": {
     "pg": {
+      "optional": true
+    },
+    "sqlite3": {
       "optional": true
     }
   },

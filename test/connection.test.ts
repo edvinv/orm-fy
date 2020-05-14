@@ -1,8 +1,8 @@
 import { getConnectionManager, ConnectionOptions } from "../src";
 
 const postgresConnectionOptions: ConnectionOptions = {
-  driver: "postgres",
-  host: "localhost",
+  driver: "sqlite",
+  connectionString: ":memory:",
   port: 5000,
   user: "postgres",
   password: "1"

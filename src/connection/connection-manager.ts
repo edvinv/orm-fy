@@ -1,6 +1,6 @@
 import { Connection } from "./connection";
 import { ConnectionOptions } from "./connection-options";
-import { PgConnection } from "../drivers/postgres/connection/pg-connection";
+import { createDriverConnection } from "../drivers/connection-factory";
 
 class ConnectionManager {
   constructor() {
@@ -11,17 +11,10 @@ class ConnectionManager {
     return this.connections.size;
   }
 
-  createConnection(option: ConnectionOptions): Connection {
-    option.name = option.name ?? "default";
+  createConnection(options: ConnectionOptions): Connection {
+    options.name = options.name ?? "default";
 
-    let connection!: Connection;
-    switch (option.driver) {
-      case "postgres":
-        connection = new PgConnection(option);
-        break;
-      default:
-        throw Error(`Invalid driver name: '${option.driver}'`);
-    }
+    let connection = createDriverConnection(options);
 
     this.connections.set(connection.name, connection);
     return connection;

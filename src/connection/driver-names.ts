@@ -1,1 +1,1 @@
-export type DriverNames = "postgres";
+export type DriverNames = "postgres" | "sqlite";

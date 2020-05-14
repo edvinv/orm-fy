@@ -1,4 +1,4 @@
 import { DefaultNamingConventions } from "../default-naming-conventions";
 
-export class PostgresNamingConventions extends DefaultNamingConventions {
+export class PgNamingConventions extends DefaultNamingConventions {
 }  

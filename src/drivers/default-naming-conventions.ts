@@ -1,6 +1,6 @@
-import { ISchemaEntity, ISchemaProperty } from "../schema/schema-builder";
 import pluralize from "pluralize";
 import { snakeCase } from "snake-case";
+import { ISchemaEntity, ISchemaProperty } from "../schema/schema-builder";
 
 export class DefaultNamingConventions {
   /** 
