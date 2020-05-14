@@ -16,7 +16,7 @@ export abstract class Connection {
 
   async abstract connect(): Promise<Client>;
   async check(): Promise<true> {
-    const result=await this.query("SELECT 21+21");
+    const result = await this.query("SELECT (21+21) as answer");
     return true;
   }
   async abstract query(text: string): Promise<QueryResult>;
