@@ -20,7 +20,7 @@ export class SqliteClient extends Client {
   async  query(text: string): Promise<QueryResult> {
     const rows = await SqliteApi.all(this.database, text);
 
-    return new QueryResult(rows);
+    return new QueryResult(rows, rows);
   }
 
   async release(): Promise<void> {

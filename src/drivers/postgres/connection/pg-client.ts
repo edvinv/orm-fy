@@ -16,12 +16,12 @@ export class PgClient extends Client {
   }
 
   async  query(text: string): Promise<QueryResult> {
-    const queryResult = await this.client.query(text);
-    return queryResult;
+    const pgQueryResult = await this.pool.query(text);
+    return new QueryResult(pgQueryResult.rows, pgQueryResult);
   }
 
   async release(): Promise<void> {
-    await this.client.release();
+    this.client.release();
   }
 
 }

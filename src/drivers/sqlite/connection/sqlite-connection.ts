@@ -19,7 +19,7 @@ export class SqliteConnection extends Connection {
   }
 
   async  connect(): Promise<Client> {
-    const database =this.database ?? await this.createDatabase();
+    const database = this.database ?? await this.createDatabase();
     const client = new SqliteClient(database);
     return client;
   }
@@ -28,7 +28,7 @@ export class SqliteConnection extends Connection {
     const database = this.database ?? await this.createDatabase();
     const rows = await SqliteApi.all(database, text);
 
-    return new QueryResult(rows);
+    return new QueryResult(rows, rows);
   }
 
   async close(): Promise<void> {

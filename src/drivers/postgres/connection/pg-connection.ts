@@ -22,8 +22,8 @@ export class PgConnection extends Connection {
   }
 
   async  query(text: string): Promise<QueryResult> {
-    const queryResult = await this.pool.query(text);
-    return queryResult;
+    const pgQueryResult = await this.pool.query(text);
+    return new QueryResult(pgQueryResult.rows, pgQueryResult);
   }
 
   async close(): Promise<void> {
