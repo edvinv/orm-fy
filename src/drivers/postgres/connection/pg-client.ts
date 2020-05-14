@@ -1,5 +1,7 @@
-import { QueryResult, Transaction, Client } from "../../../connection";
 import * as pg from "pg";
+import { Client } from "../../../connection/client";
+import { Transaction } from "../../../connection/transaction";
+import { QueryResult } from "../../../connection/query-result";
 
 export class PgClient extends Client {
   constructor(private client: pg.PoolClient, private pool: pg.Pool) {

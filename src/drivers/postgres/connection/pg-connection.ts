@@ -1,10 +1,9 @@
-import { Connection } from "../../../connection/connection";
-import { Client } from "../../../connection/client";
-import { QueryResult } from "../../../connection/query-result";
-import { ConnectionOptions } from "../../../connection/connection-options";
 import * as pg from "pg";
 import { PgClient } from "./pg-client";
-import { DriverNames } from "../..";
+import { Connection } from "../../../connection/connection";
+import { ConnectionOptions } from "../../../connection/connection-options";
+import { Client } from "../../../connection/client";
+import { QueryResult } from "../../../connection/query-result";
 
 export class PgConnection extends Connection {
   constructor(option: ConnectionOptions) {
@@ -27,7 +26,7 @@ export class PgConnection extends Connection {
     return queryResult;
   }
 
-  async close(): Promise<void>{
+  async close(): Promise<void> {
     await this.pool.end();
   }
 

@@ -1,5 +1,4 @@
-import { getConnectionManager } from "../src/connection/connection-manager";
-import { Connection } from "../src/connection";
+import { getConnectionManager, ConnectionOptions, Connection } from "../src";
 
 test("getConnectionManager should always return valid connection manager.", () => {
   const connectionManager = getConnectionManager();

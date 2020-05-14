@@ -1,6 +1,6 @@
 import { Connection } from "./connection";
 import { ConnectionOptions } from "./connection-options";
-import { PgConnection } from "../drivers";
+import { PgConnection } from "../drivers/postgres/connection/pg-connection";
 
 class ConnectionManager {
   constructor() {
@@ -11,7 +11,7 @@ class ConnectionManager {
     return this.connections.size;
   }
 
-  createConnection(option: ConnectionOptions) {
+  createConnection(option: ConnectionOptions): Connection {
     option.name = option.name ?? "default";
 
     let connection!: Connection;
@@ -27,7 +27,7 @@ class ConnectionManager {
     return connection;
   }
 
-  getConnection(name: string): Connection | undefined {
+  getConnection(name = "default"): Connection | undefined {
     const connection = this.connections.get(name);
     return connection;
   }
