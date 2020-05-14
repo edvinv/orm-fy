@@ -1,4 +1,4 @@
-import { DriverNames } from "./driver-names";
+import { DriverNames } from "../drivers/drivers";
 
 export interface ConnectionOptions {
 

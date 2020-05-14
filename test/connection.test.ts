@@ -1,19 +1,30 @@
 import { getConnectionManager, ConnectionOptions } from "../src";
 
 const postgresConnectionOptions: ConnectionOptions = {
-  driver: "sqlite",
-  connectionString: ":memory:",
+  name: "postgres",
+  driver: "postgres",
   port: 5000,
   user: "postgres",
   password: "1"
 };
 
+const sqliteConnectionOptions: ConnectionOptions = {
+  name: "sqlite",
+  driver: "sqlite",
+  connectionString: ":memory:",
+};
+
+const connectionsOptions = [postgresConnectionOptions, sqliteConnectionOptions];
+
 test("Use check method to test if connection is working.", async () => {
   const connectionManager = getConnectionManager();
-  const connection = connectionManager.createConnection(postgresConnectionOptions);
-  const checked = await connection.check();
 
-  expect(checked).toBe(true);
+  for (const options of connectionsOptions) {
+    const connection = connectionManager.createConnection(options);
+    const checked = await connection.check();
+
+    expect(checked).toBe(true);
+  }
 
   connectionManager.close();
 });

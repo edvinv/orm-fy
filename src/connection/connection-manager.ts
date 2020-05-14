@@ -13,7 +13,11 @@ class ConnectionManager {
 
   createConnection(options: ConnectionOptions): Connection {
     options.name = options.name ?? "default";
+    const existingConnection = this.getConnection(options.name);
 
+    if (existingConnection) {
+      throw new Error(`Connection with name ${options.name} already exists.`);
+    }
     let connection = createDriverConnection(options);
 
     this.connections.set(connection.name, connection);

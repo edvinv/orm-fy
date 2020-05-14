@@ -1,5 +1,5 @@
 import { ConnectionOptions } from "./connection-options";
-import { DriverNames } from "./driver-names";
+import { DriverNames } from "../drivers/drivers";
 import { Client } from "./client";
 import { QueryResult } from "./query-result";
 import { Transaction } from "./transaction";
@@ -16,7 +16,7 @@ export abstract class Connection {
 
   async abstract connect(): Promise<Client>;
   async check(): Promise<true> {
-    await this.query("SELECT 21+21");
+    const result=await this.query("SELECT 21+21");
     return true;
   }
   async abstract query(text: string): Promise<QueryResult>;
