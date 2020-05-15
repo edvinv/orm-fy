@@ -1,2 +1,2 @@
-export type DriverNames = "postgres" | "sqlite";
-export type DRIVERS = ["postgres", "sqlite"];
+export type DriverNames = "postgres" | "sqlite" | "mysql";
+export type DRIVERS = ["postgres", "sqlite", "mysql"];

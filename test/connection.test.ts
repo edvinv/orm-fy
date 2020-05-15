@@ -14,7 +14,15 @@ const sqliteConnectionOptions: ConnectionOptions = {
   connectionString: ":memory:",
 };
 
-const connectionsOptions = [postgresConnectionOptions, sqliteConnectionOptions];
+const mysqlConnectionOptions: ConnectionOptions = {
+  name: "mysql",
+  driver: "mysql",
+  port: 5003,
+  user: "root",
+  password: "1"
+};
+
+const connectionsOptions = [postgresConnectionOptions, sqliteConnectionOptions, mysqlConnectionOptions];
 
 test("Use check method to test if connection is working.", async () => {
   const connectionManager = getConnectionManager();
