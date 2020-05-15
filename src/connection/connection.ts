@@ -15,7 +15,7 @@ export abstract class Connection {
   readonly driver: DriverNames;
 
   async abstract connect(): Promise<Client>;
-  async check(): Promise<true> {
+  async ping(): Promise<true> {
     const result = await this.query("SELECT (21+21) as answer");
     const checked = result?.rows?.[0]?.answer === 42;
     if (!checked) {

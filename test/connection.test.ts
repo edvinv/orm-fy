@@ -29,7 +29,7 @@ test("Use check method to test if connection is working.", async () => {
 
   for (const options of connectionsOptions) {
     const connection = connectionManager.createConnection(options);
-    const checked = await connection.check();
+    const checked = await connection.ping();
 
     expect(checked).toBe(true);
   }
