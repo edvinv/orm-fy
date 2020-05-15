@@ -13,7 +13,8 @@
     "watch": "tsc -w",
     "clean": "rm -rf ./build",
     "test": "jest",
-    "postgres:up": "(cd ./test/environments/postgres; docker-compose up -d)"
+    "postgres:up": "(cd ./test/environments/postgres; docker-compose up -d)",
+    "mysql:up": "(cd ./test/environments/mysql; docker-compose up -d)"
   },
   "author": "edvinv",
   "license": "MIT",

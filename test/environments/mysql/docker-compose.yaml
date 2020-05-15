@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql
+    container_name: ormfy-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 5003:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 1
+
+  adminer:
+    image: adminer
+    container_name: ormfy-mysql-adminer
+    restart: always
+    ports:
+      - 5004:8080

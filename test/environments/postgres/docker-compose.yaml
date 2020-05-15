@@ -3,6 +3,7 @@ version: '3.1'
 services:
  ormfy-postgres:
   image: postgres
+  container_name: ormfy-postgres
   environment:
     POSTGRES_PASSWORD: 1
   volumes:
@@ -12,6 +13,7 @@ services:
  
  pgadmin:
    image: dpage/pgadmin4:latest
+   container_name: ormfy-postgres-pgadmin4
    ports: 
      - "5001:80"
    volumes: 
