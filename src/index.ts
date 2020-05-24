@@ -1,4 +1,4 @@
-export * from "./schema/schema-builder";
+export * from "./schema/builder/schema-builder";
 
 export * from "./drivers/default-naming-conventions";
 export * from "./drivers/connection-factory";

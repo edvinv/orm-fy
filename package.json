@@ -14,7 +14,8 @@
     "clean": "rm -rf ./build",
     "test": "jest",
     "postgres:up": "(cd ./test/environments/postgres; docker-compose up -d)",
-    "mysql:up": "(cd ./test/environments/mysql; docker-compose up -d)"
+    "mysql:up": "(cd ./test/environments/mysql; docker-compose up -d)",
+    "db:up": "npm run postgres:up;npm run mysql:up"
   },
   "author": "edvinv",
   "license": "MIT",
